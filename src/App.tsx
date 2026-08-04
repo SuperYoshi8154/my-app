@@ -122,7 +122,8 @@ function SignInForm() {
   const [flow, setFlow] = useState<"signIn" | "signUp">("signIn");
   const [error, setError] = useState<string | null>(null);
   return (
-    <div className="flex flex-col gap-8 w-96 mx-auto">
+    <>
+      <div className="flex flex-col gap-8 w-96 mx-auto">
       <p>Log in to see the numbers</p>
       <form
         className="flex flex-col gap-2"
@@ -148,11 +149,12 @@ function SignInForm() {
           placeholder="Password"
         />
         <button
-          className="bg-dark dark:bg-light text-light dark:text-dark rounded-md"
+          className="signinbtn"
           type="submit"
         >
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </button>
+        <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
         <div className="flex flex-row gap-2">
           <span>
             {flow === "signIn"
@@ -174,7 +176,8 @@ function SignInForm() {
           </div>
         )}
       </form>
-    </div>
+      </div>
+    </>
   );
 }
 
