@@ -11,7 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@convex-dev/auth": "^0.0.91",
+    "@auth0/auth0-react": "^2.22.1",
+    "@convex-dev/auth": "^0.0.94",
     "convex": "^1.42.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
@@ -34,5 +35,8 @@
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.9"
+  },
+  "allowScripts": {
+    "@auth0/auth0-react@2.22.1": true
   }
 }
