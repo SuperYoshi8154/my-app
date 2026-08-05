@@ -21,7 +21,7 @@ export default function App() {
       </header>
       <main className="p-8 flex flex-col gap-16">
         <h1 className="text-4xl font-bold text-center">
-          Help
+          
         </h1>
         <Authenticated>
           <Content />
@@ -124,7 +124,7 @@ function SignInForm() {
   return (
     <>
       <div className="flex flex-col gap-8 w-96 mx-auto">
-      <p>Log in to see</p>
+      <h1>Log in to see</h1>
       <form
         className="flex flex-col gap-2"
         onSubmit={(e) => {
@@ -199,9 +199,9 @@ function Content() {
   return (
     <div className="flex flex-col gap-8 max-w-lg mx-auto">
       <p className="whoissignedin">Welcome {viewer ?? "Anonymous"}!</p>
+      <h1>Help</h1>
       <p>
-        Click the button below and open this page in another window - this data
-        is persisted in the Convex cloud database!
+       Typescript is hard
       </p>
       <p>
         <button
@@ -218,20 +218,6 @@ function Content() {
         {numbers?.length === 0
           ? "Click the button!"
           : (numbers?.join(", ") ?? "...")}
-      </p>
-      <p>
-        Edit{" "}
-        <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
-          convex/myFunctions.ts
-        </code>{" "}
-        to change your backend
-      </p>
-      <p>
-        Edit{" "}
-        <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
-          src/App.tsx
-        </code>{" "}
-        to change your frontend
       </p>
     </div>
   );
