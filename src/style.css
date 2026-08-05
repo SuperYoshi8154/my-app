@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-    margin: 50px;
+    margin: 3.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,8 +61,8 @@ Button {
 
 .signoutbtn{
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
 }
 
 .signinbtn{
@@ -82,14 +82,14 @@ Button {
 
 .whoissignedin{
     position: absolute;
-    top: 5px;
-    right:110px
+    top: 0.625rem;
+    right: 0.625rem;
 }
 
 .taskbar{
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 10px;
+    top: 0.625rem;
     gap: 10px;
 }
