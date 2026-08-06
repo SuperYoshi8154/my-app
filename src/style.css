@@ -77,7 +77,7 @@ Button {
     flex-direction: column;
     text-align: center;
     gap: 1.25rem;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .whoissignedin{

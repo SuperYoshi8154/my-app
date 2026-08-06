@@ -154,6 +154,7 @@ function SignInForm() {
         >
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </button>
+        <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
         <div className="flex flex-row gap-2">
           <span>
             {flow === "signIn"
@@ -166,7 +167,6 @@ function SignInForm() {
           >
             {flow === "signIn" ? "Sign up instead" : "Sign in instead"}
           </span>
-          <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
         </div>
         {error && (
           <div className="bg-red-500/20 border-2 border-red-500/50 rounded-md p-2">
