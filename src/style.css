@@ -1,22 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* Base styles (Desktop layout) go here */
-.container {
-  display: flex;
-}
-
-/* Mobile styles kick in when screen is 768px or smaller */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stacks items vertically on phones */
-  }
-  
-  body {
-    font-size: 16px; /* Ensures text is easy to read */
-  }
-}
-
-
 body {
     margin: 3.125rem;
     display: flex;
@@ -91,7 +74,7 @@ Button {
 
 .signinwithgooglebtn{
     position: absolute;
-    bottom: 46.5rem;
+    bottom: 55%;
     text-align: center;
     gap: 1.25rem;
     margin: 0.5rem;
@@ -99,13 +82,13 @@ Button {
 
 .account{
     position:absolute;
-    bottom: 45rem;
+    bottom: 53%;
 }
 
 .accountsign{
     position:absolute;
-    bottom: 45rem;
-    right: 52rem;
+    bottom: 53%;
+    right: 20%;
 }
 
 .whoissignedin{
