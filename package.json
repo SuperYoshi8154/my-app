@@ -13,6 +13,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.22.1",
     "@convex-dev/auth": "^0.0.94",
+    "@vercel/analytics": "^2.0.1",
     "convex": "^1.42.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
