@@ -125,6 +125,7 @@ function SignInForm() {
     <>
       <div className="flex flex-col gap-8 w-96 mx-auto">
       <h1>Log in to see</h1>
+      <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
       <form
         className="flex flex-col gap-2"
         onSubmit={(e) => {
@@ -154,15 +155,14 @@ function SignInForm() {
         >
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </button>
-        <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
         <div className="flex flex-row gap-2">
-          <span>
+          <span className="account">
             {flow === "signIn"
               ? "Don't have an account?"
               : "Already have an account?"}
           </span>
           <span
-            className="text-dark dark:text-light underline hover:no-underline cursor-pointer"
+            className="accountsign"
             onClick={() => setFlow(flow === "signIn" ? "signUp" : "signIn")}
           >
             {flow === "signIn" ? "Sign up instead" : "Sign in instead"}

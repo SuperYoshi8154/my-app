@@ -73,11 +73,22 @@ Button {
 }
 
 .signinwithgooglebtn{
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    bottom: 46.5rem;
     text-align: center;
     gap: 1.25rem;
     margin: 0.5rem;
+}
+
+.account{
+    position:absolute;
+    bottom: 45rem;
+}
+
+.accountsign{
+    position:absolute;
+    bottom: 45rem;
+    right: 52rem;
 }
 
 .whoissignedin{
