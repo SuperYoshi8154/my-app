@@ -9,27 +9,23 @@ import {
 } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function App() {
   return (
     <>
-      <header className="sticky top-0 z-10 bg-light dark:bg-dark p-4 border-b-2 border-slate-200 dark:border-slate-800">
-        
-        <TaskBar />
-        <SignOutButton className="signoutbtn"/>
-      </header>
-      <main className="p-8 flex flex-col gap-16">
-        <h1 className="text-4xl font-bold text-center">
-          
-        </h1>
-        <Authenticated>
-          <Content />
-        </Authenticated>
-        <Unauthenticated>
+      <Authenticated>
+        <header className="sticky top-0 z-10 bg-light dark:bg-dark p-4 border-b-2 border-slate-200 dark:border-slate-800">
+
+          <SignOutButton className="signoutbtn" />
+        </header>
+        <Content />
+      </Authenticated>
+      <Unauthenticated>
+        <div className="w-full h-full flex flex-col items-center justify-center">
           <SignInForm />
-        </Unauthenticated>
-      </main>
+        </div>
+      </Unauthenticated>
     </>
   );
 }
@@ -41,10 +37,9 @@ function SignOutButton({ className }: { className?: string }) {
     <>
       {isAuthenticated && (
         <button
-          className={`bg-slate-200 dark:bg-slate-800 text-dark dark:text-light rounded-md px-2 py-1 ${
-            className ?? ""
-          }`}
-          onClick={() => void signOut()}
+          className={`bg-slate-200 dark:bg-slate-800 text-dark dark:text-light rounded-md px-2 py-1 ${className ?? ""
+            }`}
+          onClick={() => void signOut}
         >
           Sign out
         </button>
@@ -53,120 +48,64 @@ function SignOutButton({ className }: { className?: string }) {
   );
 }
 
-function TaskBar() {
-  const { isAuthenticated } = useConvexAuth();
-
-  useEffect(() => {
-    if (!isAuthenticated) return;
-    const myTaskbar = new Taskbar('taskbar-container');
-    myTaskbar.addTask('app-1', 'Notepad');
-    myTaskbar.addTask('app-2', 'Browser');
-    myTaskbar.addTask('app-3', 'Terminal');
-  }, [isAuthenticated]);
-
-  if (!isAuthenticated) return null;
-
-  return <div id="taskbar-container" className="taskbar" />;
-}
-
-interface TaskItem {
-  id: string;
-  title: string;
-  active: boolean;
-}
-
-class Taskbar {
-  private tasks: TaskItem[] = [];
-  private container: HTMLElement;
-
-  constructor(containerId: string) {
-    const el = document.getElementById(containerId);
-    if (!el) throw new Error('Container not found');
-    this.container = el;
-    this.render();
-  }
-
-  public addTask(id: string, title: string): void {
-    this.tasks.push({ id, title, active: false });
-    this.render();
-  }
-
-  public removeTask(id: string): void {
-    this.tasks = this.tasks.filter(task => task.id !== id);
-    this.render();
-  }
-
-  public activateTask(id: string): void {
-    this.tasks.forEach(task => {
-      task.active = task.id === id;
-    });
-    this.render();
-  }
-
-  private render(): void {
-    this.container.innerHTML = '';
-
-    for (const task of this.tasks) {
-      const btn = document.createElement('button');
-      btn.innerText = task.title;
-      btn.className = task.active ? 'task-btn active' : 'task-btn';
-      btn.onclick = () => this.activateTask(task.id);
-      this.container.appendChild(btn);
-    }
-  }
-}
-
 
 function SignInForm() {
   const { signIn } = useAuthActions();
   const [flow, setFlow] = useState<"signIn" | "signUp">("signIn");
   const [error, setError] = useState<string | null>(null);
+
+
+  const handleSignIn = () => {
+    signIn("google")
+  }
   return (
-    <>
-      <div className="flex flex-col gap-8 w-96 mx-auto">
-      <h1>Log in to see</h1>
-      <button onClick={() => void signIn("google")}className="signinwithgooglebtn">Sign in with Google</button>
-      <form
-        className="flex flex-col gap-2"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
-          formData.set("flow", flow);
-          void signIn("password", formData).catch((error) => {
-            setError(error.message);
-          });
-        }}
-      >
-        <input
-          className="email"
-          type="email"
-          name="email"
-          placeholder="Email"
-        />
-        <input
-          className="password"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
-        <button
-          className="signinbtn"
-          type="submit"
+      <div className="p-6 rounded-xl bg-black/20">
+        <h1 className="font-bold text-2xl text-center mb-5">Log in to see</h1>
+
+        <form
+          className="flex flex-col gap-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);2
+            formData.set("flow", flow);
+            void signIn("password", formData).catch((error) => {
+              setError(error.message);
+            });
+          }}
         >
-          {flow === "signIn" ? "Sign in" : "Sign up"}
-        </button>
-        <div className="flex flex-row gap-2">
-          <span className="account">
+          <input
+            className="w-full p-2 bg-black rounded-md" 
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+          <input
+            className="w-full p-2 bg-black rounded-md" 
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <button
+            className="w-full p-2 bg-black rounded-md" 
+            type="submit"
+          >
+            {flow === "signIn" ? "Sign in" : "Sign up"}
+          </button>
+        </form>
+        <div className="w-full flex gap-1 items-center"><span className="w-full h-px bg-gray-500/50" /> <p className="px-2">or</p><span className="w-full h-px bg-gray-500/50" /></div>
+        <button onClick={handleSignIn} className="w-full p-2 bg-black rounded-md" >Sign in with Google</button>
+        <div className="flex gap-2 mt-2 w-full justify-center">
+          <div>
             {flow === "signIn"
               ? "Don't have an account?"
               : "Already have an account?"}
-          </span>
-          <span
-            className="accountsign"
+          </div>
+          <div
             onClick={() => setFlow(flow === "signIn" ? "signUp" : "signIn")}
+            className="cursor-pointer"
           >
             {flow === "signIn" ? "Sign up instead" : "Sign in instead"}
-          </span>
+          </div>
         </div>
         {error && (
           <div className="bg-red-500/20 border-2 border-red-500/50 rounded-md p-2">
@@ -175,9 +114,8 @@ function SignInForm() {
             </p>
           </div>
         )}
-      </form>
+
       </div>
-    </>
   );
 }
 
@@ -201,7 +139,7 @@ function Content() {
       <p className="whoissignedin">Welcome {viewer ?? "Anonymous"}!</p>
       <h1>Help</h1>
       <p>
-       Typescript is hard
+        Typescript is hard
       </p>
       <p>
         <button
