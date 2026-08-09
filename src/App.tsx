@@ -138,11 +138,11 @@ function Content() {
       </header>
       <main className="flex flex-col gap-8 max-w-lg mx-auto">
 
-        <h1>Help</h1>
-        <p>
+        <h1 className="font-bold text-4xl text-center mb-5">Help</h1>
+        <p className="text-2xl text-center mb-3">
           Typescript is hard
         </p>
-        <p>
+        <p className="flex justify-center">
           <button
             className="p-2 bg-black rounded-md"
             onClick={() => {
@@ -152,7 +152,7 @@ function Content() {
             Add a random number
           </button>
         </p>
-        <p>
+        <p className="flex justify-certer">
           Numbers:{" "}
           {numbers?.length === 0
             ? "Click the button!"
