@@ -139,7 +139,7 @@ function Content() {
       <main className="flex flex-col gap-8 max-w-lg mx-auto">
 
         <h1 className="font-bold text-4xl text-center mb-5">Help</h1>
-        <p className="text-2xl text-center mb-3">
+        <p className="text-2xl text-center mb-1">
           Typescript is hard
         </p>
         <p className="flex justify-center">
@@ -152,7 +152,7 @@ function Content() {
             Add a random number
           </button>
         </p>
-        <p className="flex justify-certer">
+        <p className="flex justify-center">
           Numbers:{" "}
           {numbers?.length === 0
             ? "Click the button!"
