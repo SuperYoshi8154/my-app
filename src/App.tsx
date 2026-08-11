@@ -9,7 +9,8 @@ import {
 } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { useState } from "react";
+import { useState } from "react"; 
+import{ Navbar } from './Navbar';
 
 export default function App() {
   return (
@@ -119,7 +120,7 @@ function Content() {
     useQuery(api.myFunctions.listNumbers, {
       count: 10,
     }) ?? {};
-  const user = useQuery(api.users.get)
+  const user = useQuery(api.users.get);
   const addNumber = useMutation(api.myFunctions.addNumber);
 
   if (viewer === undefined || numbers === undefined) {
@@ -134,14 +135,11 @@ function Content() {
     <div>
       <header className="w-full h-12 flex items-center justify-end px-2 gap-2">
         <p>Welcome {user?.email ?? "Anonymous"}!</p>
-        <SignOutButton className=" p-2 bg-black rounded-md" />
+        <SignOutButton className="p-2 bg-black rounded-md" />
       </header>
       <main className="flex flex-col gap-8 max-w-lg mx-auto">
-
         <h1 className="font-bold text-4xl text-center mb-5">Help</h1>
-        <p className="text-2xl text-center mb-1">
-          Typescript is hard
-        </p>
+        <p className="text-2xl text-center mb-1">Typescript is hard</p>
         <p className="flex justify-center">
           <button
             className="p-2 bg-black rounded-md"
@@ -154,11 +152,10 @@ function Content() {
         </p>
         <p className="flex justify-center">
           Numbers:{" "}
-          {numbers?.length === 0
-            ? "Click the button!"
-            : (numbers?.join(", ") ?? "...")}
+          {numbers?.length === 0 ? "Click the button!" : numbers?.join(", ")}
         </p>
       </main>
     </div>
   );
 }
+
