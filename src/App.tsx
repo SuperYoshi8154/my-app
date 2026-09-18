@@ -10,7 +10,6 @@ import {
 import { api } from "../convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useState } from "react"; 
-import{ Navbar } from './Navbar';
 
 export default function App() {
   return (
@@ -34,9 +33,9 @@ function SignOutButton({ className }: { className?: string }) {
     <>
       {isAuthenticated && (
         <button
-          className={`p-2 px-4 bg-black rounded-md ${className ?? ""
+          className={`p-2 px-4 bg-black rounded-md hover:bg-gray-900 ${className ?? ""
             }`}
-          onClick={() => void signOut}
+          onClick={() => void signOut()}
         >
           Sign out
         </button>
@@ -82,14 +81,14 @@ function SignInForm() {
           placeholder="Password"
         />
         <button
-          className="w-full p-2 bg-black rounded-md"
+          className="w-full p-2 bg-black rounded-md hover:bg-gray-900"
           type="submit"
         >
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </button>
       </form>
       <div className="w-full flex gap-1 items-center"><span className="w-full h-px bg-gray-500/50" /> <p className="px-2">or</p><span className="w-full h-px bg-gray-500/50" /></div>
-      <button onClick={handleSignIn} className="w-full p-2 bg-black rounded-md" >Sign in with Google</button>
+      <button onClick={handleSignIn} className="w-full p-2 bg-black rounded-md hover:bg-gray-900" >Sign in with Google</button>
       <div className="flex gap-2 mt-2 w-full justify-center">
         <div>
           {flow === "signIn"
@@ -142,7 +141,7 @@ function Content() {
         <p className="text-2xl text-center mb-1">Typescript is hard</p>
         <p className="flex justify-center">
           <button
-            className="p-2 bg-black rounded-md"
+            className="p-2 bg-black rounded-md hover:bg-gray-900"
             onClick={() => {
               void addNumber({ value: Math.floor(Math.random() * 10) });
             }}
